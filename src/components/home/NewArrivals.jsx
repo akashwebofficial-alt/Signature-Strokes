@@ -35,9 +35,9 @@ const ProductCard = ({ product }) => {
         </h3>
         
         <div className="flex items-center justify-center gap-2 text-[14px]">
-          <span className="font-bold text-[#333]">₹{product.price.toLocaleString()}</span>
+          <span className="font-bold text-[#333]">${product.price.toFixed(2)} CAD</span>
           {product.originalPrice && (
-            <span className="text-gray-400 line-through text-[12px]">₹{product.originalPrice.toLocaleString()}</span>
+            <span className="text-gray-400 line-through text-[12px]">${product.originalPrice.toFixed(2)} CAD</span>
           )}
           {product.discount && (
             <span className="text-red-600 text-[12px] font-semibold">{product.discount}</span>
@@ -51,70 +51,67 @@ const ProductCard = ({ product }) => {
 const NewArrivals = () => {
   const products = [
     {
-      id: 1,
-      name: 'Nike Domain 3 Low Spikes Cricket Shoes',
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070',
-      price: 12745,
-      originalPrice: 14995,
-      discount: 'Save 15%',
-      isSoldOut: true,
-    },
-    {
-      id: 2,
-      name: 'Nike Domain 3 Low Spikes Cricket Shoes White',
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070',
-      price: 12745,
-      originalPrice: 14995,
-      discount: 'Save 15%',
-      isSoldOut: true,
-    },
-    {
-      id: 3,
-      name: 'Somi Msd Hitter English Willow Cricket Bat Size Long Blade',
-      image: 'https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=2000',
-      price: 25499,
-      originalPrice: 29999,
-      discount: 'Save 15%',
-      isSoldOut: true,
-    },
-    {
-      id: 4,
-      name: 'Somi Exploder English Willow Cricket Bat Size SH',
-      image: 'https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=2000',
-      price: 32299,
-      originalPrice: 37999,
+      id: 101,
+      name: 'DSC Krunch The Bull English Willow Cricket Bat Size SH',
+      image: 'https://www.cricketershop.com/cdn/shop/files/DSC-Krunch-The-Bull-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
+      price: 455.99,
+      originalPrice: 535.99,
       discount: 'Save 15%',
     },
     {
-      id: 5,
-      name: 'Shrey Meta VR Cricket Batting Combo Thigh Guard Radiant Red',
-      image: 'https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2067',
-      price: 2550,
-      originalPrice: 3279,
-      discount: 'Save 22%',
+      id: 102,
+      name: 'SS Ton Retro Elite English Willow Cricket Bat Size SH',
+      image: 'https://www.cricketershop.com/cdn/shop/files/SS-Ton-Retro-Elite-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
+      price: 382.99,
+      originalPrice: 449.99,
+      discount: 'Save 15%',
     },
     {
-      id: 6,
-      name: 'SG KLR Class English Willow Cricket Bat Size SH',
-      image: 'https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=2000',
-      price: 56000,
-      originalPrice: 70000,
-      discount: 'Save 20%',
+      id: 103,
+      name: 'Gray-Nicolls Vapour 1000 English Willow Cricket Bat Size SH',
+      image: 'https://www.cricketershop.com/cdn/shop/files/Gray-Nicolls-Vapour-1000-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
+      price: 524.99,
+      originalPrice: 615.99,
+      discount: 'Save 15%',
     },
     {
-      id: 7,
-      name: 'SG Kung Fu Pandya English Willow Cricket Bat Size SH',
-      image: 'https://images.unsplash.com/photo-1593341646782-e0b495cff86d?q=80&w=2000',
-      price: 56000,
-      originalPrice: 70000,
-      discount: 'Save 20%',
+      id: 104,
+      name: 'New Balance NB TC 1260 English Willow Cricket Bat Size SH',
+      image: 'https://www.cricketershop.com/cdn/shop/files/New-Balance-NB-TC-1260-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
+      price: 899.99,
+      originalPrice: 1058.99,
+      discount: 'Save 15%',
     },
     {
-      id: 8,
-      name: 'Adidas 22 Yard Cloud White Aurora Onix Core Black Spikes Cricket Shoes',
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070',
-      price: 10199,
-      originalPrice: 11999,
+      id: 105,
+      name: 'Kookaburra Ghost Pro Cricket Batting Pads Mens Size',
+      image: 'https://www.cricketershop.com/cdn/shop/files/Kookaburra-Ghost-Pro-Cricket-Batting-Pads-Mens-Size_360x.jpg',
+      price: 135.99,
+      originalPrice: 159.99,
+      discount: 'Save 15%',
+    },
+    {
+      id: 106,
+      name: 'Masuri Vision Series Test Cricket Helmet Steel Grill',
+      image: 'https://www.cricketershop.com/cdn/shop/files/Masuri-Vision-Series-Test-Cricket-Helmet-Steel-Grill_360x.jpg',
+      price: 169.99,
+      originalPrice: 199.99,
+      discount: 'Save 15%',
+    },
+    {
+      id: 107,
+      name: 'Puma 19.1 Spike Cricket Shoes White and Yellow',
+      image: 'https://www.cricketershop.com/cdn/shop/files/Puma-19.1-Spike-Cricket-Shoes-White-and-Yellow_360x.jpg',
+      price: 212.99,
+      originalPrice: 249.99,
+      discount: 'Save 15%',
+    },
+    {
+      id: 108,
+      name: 'Gunn & Moore (GM) Diamond 808 Cricket Batting Gloves',
+      image: 'https://www.cricketershop.com/cdn/shop/files/Gunn-Moore-GM-Diamond-808-Cricket-Batting-Gloves_360x.jpg',
+      price: 76.99,
+      originalPrice: 89.99,
       discount: 'Save 15%',
     },
   ];

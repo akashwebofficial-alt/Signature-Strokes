@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const CustomServiceBanners = () => {
+  const navigate = useNavigate();
   return (
     <section className="w-full pb-16 bg-[#F8F8F8] overflow-hidden">
       <div className="flex justify-center py-10 bg-white">
@@ -32,7 +34,10 @@ const CustomServiceBanners = () => {
                  Direct from our bat factory - <br className="hidden md:block" /> tailored to your game
                </p>
             </div>
-            <button className="bg-white text-black px-10 py-2.5 rounded-full font-bold text-xs tracking-[0.2em] shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+            <button 
+              onClick={() => navigate('/customised-bats')}
+              className="bg-white text-black px-10 py-2.5 rounded-full font-bold text-xs tracking-[0.2em] shadow-lg hover:bg-black hover:text-white transition-all duration-300"
+            >
               SHOP THIS
             </button>
           </div>
@@ -65,7 +70,10 @@ const CustomServiceBanners = () => {
                <p>LATEST PRINTING TECHNOLOGY</p>
             </div>
 
-            <button className="bg-white text-black px-10 py-2.5 rounded-full font-bold text-xs tracking-[0.2em] shadow-lg hover:bg-black hover:text-white transition-all duration-300">
+            <button 
+              onClick={() => navigate('/customized-jerseys')}
+              className="bg-white text-black px-10 py-2.5 rounded-full font-bold text-xs tracking-[0.2em] shadow-lg hover:bg-black hover:text-white transition-all duration-300"
+            >
               SHOP THIS
             </button>
           </div>

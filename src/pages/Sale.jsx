@@ -176,78 +176,6 @@ const Sale = () => {
       save: '25%',
       image: 'https://www.cricketershop.com/cdn/shop/files/SF-Transformation-2.0-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
       rating: null
-    },
-    {
-      id: 13,
-      name: 'DSC Intense Speed Navy Cricket Batting Leg Guard Pads',
-      price: '3,950',
-      oldPrice: '4,935',
-      save: '20%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/DSC-Intense-Speed-Navy-Cricket-Batting-Leg-Guard-Pads_360x.jpg',
-      rating: null
-    },
-    {
-      id: 14,
-      name: 'DSC Condor Flite Navy Cricket Batting Leg Guard Pads Size',
-      price: '3,835',
-      oldPrice: '4,565',
-      save: '16%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/DSC-Condor-Flite-Navy-Cricket-Batting-Leg-Guard-Pads_360x.jpg',
-      rating: null
-    },
-    {
-      id: 15,
-      name: 'New Balance NB CK4020 K4 Cricket Rubber Shoes',
-      price: '3,835',
-      oldPrice: '5,045',
-      save: '24%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/New-Balance-NB-CK4020-K4-Cricket-Rubber-Shoes_360x.jpg',
-      rating: 5
-    },
-    {
-      id: 16,
-      name: 'Bas Vampire Players GX 8000 Cricket Kitbag',
-      price: '3,715',
-      oldPrice: '4,950',
-      save: '25%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/Bas-Vampire-Players-GX-8000-Cricket-Kitbag_360x.jpg',
-      rating: null
-    },
-    {
-      id: 17,
-      name: 'SS Ultimate Blue Red Cricket Shoes',
-      price: '3,285',
-      oldPrice: '4,380',
-      save: '25%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/SS-Ultimate-Blue-Red-Cricket-Shoes_360x.jpg',
-      rating: null
-    },
-    {
-      id: 18,
-      name: 'Kookaburra Pro 600 Cricket Helmet Size',
-      price: '3,285',
-      oldPrice: '4,100',
-      save: '20%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/Kookaburra-Pro-600-Cricket-Helmet_360x.jpg',
-      rating: null
-    },
-    {
-      id: 19,
-      name: 'Reebok Excel English Willow Cricket Bat Size 6',
-      price: '3,225',
-      oldPrice: '7,010',
-      save: '54%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/Reebok-Excel-English-Willow-Cricket-Bat-Size-6_360x.jpg',
-      rating: null
-    },
-    {
-      id: 20,
-      name: 'Reebok Re-Volve Tech Cricket Rubber Shoes',
-      price: '3,225',
-      oldPrice: '4,600',
-      save: '30%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/Reebok-Re-Volve-Tech-Cricket-Rubber-Shoes_360x.jpg',
-      rating: 5
     }
   ];
 
@@ -274,86 +202,88 @@ const Sale = () => {
           <div className="mb-8">
             <h2 className="text-[12px] font-bold text-gray-400 tracking-[0.2em] mb-6 uppercase border-b border-gray-100 pb-2">Filters</h2>
             
-            {/* Price Filter */}
-            <div className="mb-8">
-              <div className="flex items-center justify-between cursor-pointer py-2">
-                <span className="text-[11px] font-bold tracking-[0.1em] uppercase">Price</span>
-                <ChevronDown className="w-4 h-4" />
-              </div>
-              <div className="mt-4 px-2">
-                <div className="flex justify-between text-[12px] text-gray-600 mb-4">
-                  <span>₹0.00</span>
-                  <span>₹1,35,000.00</span>
+            <div className="max-h-[800px] overflow-y-auto pr-4 custom-scrollbar">
+              {/* Price Filter */}
+              <div className="mb-8">
+                <div className="flex items-center justify-between cursor-pointer py-2">
+                  <span className="text-[11px] font-bold tracking-[0.1em] uppercase">Price</span>
+                  <ChevronDown className="w-4 h-4" />
                 </div>
-                <div className="relative h-1 bg-gray-200 rounded-full">
-                  <div className="absolute h-full bg-[#E67E22] rounded-full" style={{ left: '0%', right: '0%' }} />
-                  <div className="absolute top-1/2 -translate-y-1/2 left-0 w-3 h-3 bg-[#E67E22] rounded-full cursor-pointer shadow-sm" />
-                  <div className="absolute top-1/2 -translate-y-1/2 right-0 w-3 h-3 bg-[#E67E22] rounded-full cursor-pointer shadow-sm" />
+                <div className="mt-4 px-2">
+                  <div className="flex justify-between text-[12px] text-gray-600 mb-4">
+                    <span>₹0.00</span>
+                    <span>₹1,35,000.00</span>
+                  </div>
+                  <div className="relative h-1 bg-gray-200 rounded-full">
+                    <div className="absolute h-full bg-[#E67E22] rounded-full" style={{ left: '0%', right: '0%' }} />
+                    <div className="absolute top-1/2 -translate-y-1/2 left-0 w-3 h-3 bg-[#E67E22] rounded-full cursor-pointer shadow-sm" />
+                    <div className="absolute top-1/2 -translate-y-1/2 right-0 w-3 h-3 bg-[#E67E22] rounded-full cursor-pointer shadow-sm" />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Brand Filter */}
-            <div className="mb-6 border-t border-gray-100 pt-4">
-              <div className="flex items-center justify-between cursor-pointer py-2">
-                <span className="text-[11px] font-bold tracking-[0.1em] uppercase">Brand</span>
-                <ChevronDown className="w-4 h-4" />
+              {/* Brand Filter */}
+              <div className="mb-6 border-t border-gray-100 pt-4">
+                <div className="flex items-center justify-between cursor-pointer py-2">
+                  <span className="text-[11px] font-bold tracking-[0.1em] uppercase">Brand</span>
+                  <ChevronDown className="w-4 h-4" />
+                </div>
+                <div className="mt-4 pr-2">
+                  {brands.map(brand => (
+                    <label key={brand.name} className="flex items-center gap-3 mb-3 cursor-pointer group">
+                      <input type="checkbox" className="w-4 h-4 border-gray-300 rounded focus:ring-0 accent-black" />
+                      <span className="text-[13px] text-gray-600 group-hover:text-black transition-colors">{brand.name} ({brand.count})</span>
+                    </label>
+                  ))}
+                </div>
               </div>
-              <div className="mt-4 max-h-[250px] overflow-y-auto pr-2 custom-scrollbar">
-                {brands.map(brand => (
-                  <label key={brand.name} className="flex items-center gap-3 mb-3 cursor-pointer group">
-                    <input type="checkbox" className="w-4 h-4 border-gray-300 rounded focus:ring-0 accent-black" />
-                    <span className="text-[13px] text-gray-600 group-hover:text-black transition-colors">{brand.name} ({brand.count})</span>
-                  </label>
-                ))}
-              </div>
-            </div>
 
-            {/* Size Filter */}
-            <div className="mb-6 border-t border-gray-100 pt-4">
-              <div className="flex items-center justify-between cursor-pointer py-2">
-                <span className="text-[11px] font-bold tracking-[0.1em] uppercase">Size</span>
-                <ChevronDown className="w-4 h-4" />
+              {/* Size Filter */}
+              <div className="mb-6 border-t border-gray-100 pt-4">
+                <div className="flex items-center justify-between cursor-pointer py-2">
+                  <span className="text-[11px] font-bold tracking-[0.1em] uppercase">Size</span>
+                  <ChevronDown className="w-4 h-4" />
+                </div>
+                <div className="mt-4 pr-2">
+                  {sizes.map(size => (
+                    <label key={size.name} className="flex items-center gap-3 mb-3 cursor-pointer group">
+                      <input type="checkbox" className="w-4 h-4 border-gray-300 rounded focus:ring-0 accent-black" />
+                      <span className="text-[13px] text-gray-600 group-hover:text-black transition-colors">{size.name} ({size.count})</span>
+                    </label>
+                  ))}
+                </div>
               </div>
-              <div className="mt-4 max-h-[250px] overflow-y-auto pr-2 custom-scrollbar">
-                {sizes.map(size => (
-                  <label key={size.name} className="flex items-center gap-3 mb-3 cursor-pointer group">
-                    <input type="checkbox" className="w-4 h-4 border-gray-300 rounded focus:ring-0 accent-black" />
-                    <span className="text-[13px] text-gray-600 group-hover:text-black transition-colors">{size.name} ({size.count})</span>
-                  </label>
-                ))}
-              </div>
-            </div>
 
-            {/* Style Filter */}
-            <div className="mb-6 border-t border-gray-100 pt-4">
-              <div className="flex items-center justify-between cursor-pointer py-2">
-                <span className="text-[11px] font-bold tracking-[0.1em] uppercase">Style</span>
-                <ChevronDown className="w-4 h-4" />
+              {/* Style Filter */}
+              <div className="mb-6 border-t border-gray-100 pt-4">
+                <div className="flex items-center justify-between cursor-pointer py-2">
+                  <span className="text-[11px] font-bold tracking-[0.1em] uppercase">Style</span>
+                  <ChevronDown className="w-4 h-4" />
+                </div>
+                <div className="mt-4 pr-2">
+                  {styles.map(style => (
+                    <label key={style.name} className="flex items-center gap-3 mb-3 cursor-pointer group">
+                      <input type="checkbox" className="w-4 h-4 border-gray-300 rounded focus:ring-0 accent-black" />
+                      <span className="text-[13px] text-gray-600 group-hover:text-black transition-colors">{style.name} ({style.count})</span>
+                    </label>
+                  ))}
+                </div>
               </div>
-              <div className="mt-4 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
-                {styles.map(style => (
-                  <label key={style.name} className="flex items-center gap-3 mb-3 cursor-pointer group">
-                    <input type="checkbox" className="w-4 h-4 border-gray-300 rounded focus:ring-0 accent-black" />
-                    <span className="text-[13px] text-gray-600 group-hover:text-black transition-colors">{style.name} ({style.count})</span>
-                  </label>
-                ))}
-              </div>
-            </div>
 
-            {/* Availability Filter */}
-            <div className="mb-6 border-t border-gray-100 pt-4">
-              <div className="flex items-center justify-between cursor-pointer py-2">
-                <span className="text-[11px] font-bold tracking-[0.1em] uppercase">Availability</span>
-                <ChevronDown className="w-4 h-4" />
-              </div>
-              <div className="mt-4">
-                {availability.map(item => (
-                  <label key={item.name} className="flex items-center gap-3 mb-3 cursor-pointer group">
-                    <input type="checkbox" className="w-4 h-4 border-gray-300 rounded focus:ring-0 accent-black" />
-                    <span className="text-[13px] text-gray-600 group-hover:text-black transition-colors">{item.name} ({item.count})</span>
-                  </label>
-                ))}
+              {/* Availability Filter */}
+              <div className="mb-6 border-t border-gray-100 pt-4">
+                <div className="flex items-center justify-between cursor-pointer py-2">
+                  <span className="text-[11px] font-bold tracking-[0.1em] uppercase">Availability</span>
+                  <ChevronDown className="w-4 h-4" />
+                </div>
+                <div className="mt-4">
+                  {availability.map(item => (
+                    <label key={item.name} className="flex items-center gap-3 mb-3 cursor-pointer group">
+                      <input type="checkbox" className="w-4 h-4 border-gray-300 rounded focus:ring-0 accent-black" />
+                      <span className="text-[13px] text-gray-600 group-hover:text-black transition-colors">{item.name} ({item.count})</span>
+                    </label>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

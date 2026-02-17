@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const BannerSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="w-full pb-16 overflow-hidden bg-white">
       {/* Top Two Banners */}
@@ -22,8 +24,11 @@ const BannerSection = () => {
             <h3 className="text-3xl md:text-5xl font-black mb-6 tracking-tight uppercase">
               Women Range
             </h3>
-            <button className="bg-white text-black px-8 py-2 rounded-full font-bold text-sm tracking-widest hover:bg-[#002B49] hover:text-white transition-all duration-300">
-              SHOP THIS
+            <button 
+              onClick={() => navigate('/sale')}
+              className="bg-white text-black px-8 py-2 rounded-full font-bold text-sm tracking-widest hover:bg-[#002B49] hover:text-white transition-all duration-300"
+            >
+              SHOP NOW
             </button>
           </div>
         </motion.div>
@@ -45,8 +50,11 @@ const BannerSection = () => {
             <h3 className="text-3xl md:text-5xl font-black mb-6 tracking-tight uppercase">
               Junior Range
             </h3>
-            <button className="bg-white text-black px-8 py-2 rounded-full font-bold text-sm tracking-widest hover:bg-[#002B49] hover:text-white transition-all duration-300">
-              SHOP THIS
+            <button 
+              onClick={() => navigate('/junior-cricket')}
+              className="bg-white text-black px-8 py-2 rounded-full font-bold text-sm tracking-widest hover:bg-[#002B49] hover:text-white transition-all duration-300"
+            >
+              SHOP NOW
             </button>
           </div>
         </motion.div>

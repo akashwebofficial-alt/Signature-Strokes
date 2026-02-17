@@ -12,6 +12,9 @@ import ShippingPolicy from './pages/ShippingPolicy'
 import RefundPolicy from './pages/RefundPolicy'
 import TermsOfService from './pages/TermsOfService'
 import ProductDetail from './pages/ProductDetail'
+import JuniorCricket from './pages/JuniorCricket'
+import CustomizedJerseys from './pages/CustomizedJerseys'
+import CustomisedBats from './pages/CustomisedBats'
 
 function App() {
   // Ensure page scrolls to top on reload
@@ -111,6 +114,39 @@ function App() {
                 <Navbar />
               </div>
               <ProductDetail />
+              <Footer />
+            </>
+          } />
+
+          <Route path="/junior-cricket" element={
+            <>
+              <div className="sticky top-0 z-50 bg-white shadow-sm">
+                <Header />
+                <Navbar />
+              </div>
+              <JuniorCricket />
+              <Footer />
+            </>
+          } />
+
+          <Route path="/customized-jerseys" element={
+            <>
+              <div className="sticky top-0 z-50 bg-white shadow-sm">
+                <Header />
+                <Navbar />
+              </div>
+              <CustomizedJerseys />
+              <Footer />
+            </>
+          } />
+
+          <Route path="/customised-bats" element={
+            <>
+              <div className="sticky top-0 z-50 bg-white shadow-sm">
+                <Header />
+                <Navbar />
+              </div>
+              <CustomisedBats />
               <Footer />
             </>
           } />
