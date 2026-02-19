@@ -15,6 +15,7 @@ import ProductDetail from './pages/ProductDetail'
 import JuniorCricket from './pages/JuniorCricket'
 import CustomizedJerseys from './pages/CustomizedJerseys'
 import CustomisedBats from './pages/CustomisedBats'
+import ProductListing from './pages/ProductListing'
 
 function App() {
   // Ensure page scrolls to top on reload
@@ -147,6 +148,39 @@ function App() {
                 <Navbar />
               </div>
               <CustomisedBats />
+              <Footer />
+            </>
+          } />
+
+          <Route path="/collection/:category" element={
+            <>
+              <div className="sticky top-0 z-50 bg-white shadow-sm">
+                <Header />
+                <Navbar />
+              </div>
+              <ProductListing />
+              <Footer />
+            </>
+          } />
+
+          <Route path="/new-arrivals" element={
+            <>
+              <div className="sticky top-0 z-50 bg-white shadow-sm">
+                <Header />
+                <Navbar />
+              </div>
+              <ProductListing specialType="new-arrivals" />
+              <Footer />
+            </>
+          } />
+
+          <Route path="/featured-collection" element={
+            <>
+              <div className="sticky top-0 z-50 bg-white shadow-sm">
+                <Header />
+                <Navbar />
+              </div>
+              <ProductListing specialType="featured" />
               <Footer />
             </>
           } />

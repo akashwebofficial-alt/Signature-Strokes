@@ -1,8 +1,13 @@
 import { ChevronDown, Heart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { allProducts } from '../data/products';
 
 const Sale = () => {
   const navigate = useNavigate();
+  
+  // Filter products that are on sale (have oldPrice)
+  const saleProducts = allProducts.filter(product => product.oldPrice);
+
   const brands = [
     { name: 'SG', count: 9 },
     { name: 'SS', count: 8 },
@@ -68,117 +73,6 @@ const Sale = () => {
     { name: 'Out of stock', count: 32 },
   ];
 
-  const products = [
-    {
-      id: 1,
-      name: 'SF Black Edition Player Edition English Willow Cricket Bat Size SH',
-      price: '90,160',
-      oldPrice: '1,28,800',
-      save: '30%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/SF-Black-Edition-Player-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: null
-    },
-    {
-      id: 2,
-      name: 'SF SD 42 English Willow Cricket Bat Size SH',
-      price: '78,350',
-      oldPrice: '1,04,470',
-      save: '25%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/SF-SD-42-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: null
-    },
-    {
-      id: 3,
-      name: 'Gunn & Moore (GM) Chroma Player Edition English Willow Cricket Bat Size SH',
-      price: '54,570',
-      oldPrice: '90,949',
-      save: '40%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/Gunn-Moore-GM-Chroma-Player-Edition-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: null
-    },
-    {
-      id: 4,
-      name: 'Gunn & Moore (GM) Chroma Signature English Willow Cricket Bat Size SH',
-      price: '53,306',
-      oldPrice: '71,075',
-      save: '25%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/Gunn-Moore-GM-Chroma-Signature-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: null
-    },
-    {
-      id: 5,
-      name: 'Gunn & Moore (GM) Icon Signature + English Willow Cricket Bat Size SH',
-      price: '48,150',
-      oldPrice: '65,065',
-      save: '26%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/Gunn-Moore-GM-Icon-Signature-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: null
-    },
-    {
-      id: 6,
-      name: 'DSC Blu PRO English Willow Cricket Bat Size SH',
-      price: '45,800',
-      oldPrice: '68,360',
-      save: '33%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/DSC-Blu-PRO-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: null
-    },
-    {
-      id: 7,
-      name: 'DSC Condor Patrol English Willow Cricket Bat Size SH',
-      price: '36,350',
-      oldPrice: '42,765',
-      save: '15%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/DSC-Condor-Patrol-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: null
-    },
-    {
-      id: 8,
-      name: 'Gunn & Moore (GM) Siren Limited Edition English Willow Cricket Bat Size SH',
-      price: '32,700',
-      oldPrice: '50,300',
-      save: '35%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/Gunn-Moore-GM-Siren-Limited-Edition-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: null
-    },
-    {
-      id: 9,
-      name: 'Gunn & Moore (GM) Prima Excalibur English Willow Cricket Bat Size SH',
-      price: '31,350',
-      oldPrice: '41,800',
-      save: '25%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/Gunn-Moore-GM-Prima-Excalibur-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: null
-    },
-    {
-      id: 10,
-      name: 'DSC Split 400 English Willow Cricket Bat Size SH',
-      price: '25,999',
-      oldPrice: '30,580',
-      save: '15%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/DSC-Split-400-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: 5
-    },
-    {
-      id: 11,
-      name: 'DSC Blak 400 English Willow Cricket Bat Size SH',
-      price: '23,999',
-      oldPrice: '29,999',
-      save: '20%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/DSC-Blak-400-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: 5
-    },
-    {
-      id: 12,
-      name: 'SF Transformation 2.0 English Willow Cricket Bat Size SH',
-      price: '22,599',
-      oldPrice: '30,130',
-      save: '25%',
-      image: 'https://www.cricketershop.com/cdn/shop/files/SF-Transformation-2.0-English-Willow-Cricket-Bat-Size-SH_360x.jpg',
-      rating: null
-    }
-  ];
-
   return (
     <div className="bg-white">
       {/* Sale Banner */}
@@ -196,13 +90,13 @@ const Sale = () => {
         </h1>
       </section>
 
-      <div className="max-w-[1600px] mx-auto px-4 py-12 flex gap-8">
-        {/* Filters Sidebar */}
-        <aside className="w-64 flex-shrink-0 hidden lg:block">
-          <div className="mb-8">
-            <h2 className="text-[12px] font-bold text-gray-400 tracking-[0.2em] mb-6 uppercase border-b border-gray-100 pb-2">Filters</h2>
+      <div className="max-w-[1600px] mx-auto px-4">
+        <div className="flex gap-8 py-12 relative">
+          {/* Filters Sidebar - Sticky */}
+          <aside className="w-64 flex-shrink-0 hidden lg:flex flex-col border-r border-gray-50 sticky top-4 h-[calc(100vh-32px)] overflow-y-auto pr-4 custom-scrollbar">
+            <h2 className="text-[12px] font-bold text-gray-400 tracking-[0.2em] mb-6 uppercase border-b border-gray-100 pb-2 flex-shrink-0">Filters</h2>
             
-            <div className="max-h-[800px] overflow-y-auto pr-4 custom-scrollbar">
+            <div className="flex-1 pr-4">
               {/* Price Filter */}
               <div className="mb-8">
                 <div className="flex items-center justify-between cursor-pointer py-2">
@@ -286,65 +180,67 @@ const Sale = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </aside>
+          </aside>
 
-        {/* Product Grid */}
-        <main className="flex-1">
-          <div className="flex justify-end mb-8">
-            <div className="relative inline-block text-left">
-              <select className="appearance-none bg-white border border-gray-200 py-2 pl-4 pr-10 text-[13px] focus:outline-none cursor-pointer rounded-sm">
-                <option>Price (High to Low)</option>
-                <option>Price (Low to High)</option>
-                <option>Best Selling</option>
-                <option>Newest</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
-                <ChevronDown className="w-4 h-4" />
+          {/* Product Grid Area - Using page scroll */}
+          <main className="flex-1">
+            <div className="flex justify-end mb-8 flex-shrink-0">
+              <div className="relative inline-block text-left">
+                <select className="appearance-none bg-white border border-gray-200 py-2 pl-4 pr-10 text-[13px] focus:outline-none cursor-pointer rounded-sm">
+                  <option>Price (High to Low)</option>
+                  <option>Price (Low to High)</option>
+                  <option>Best Selling</option>
+                  <option>Newest</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-400">
+                  <ChevronDown className="w-4 h-4" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map(product => (
-              <div 
-                key={product.id} 
-                onClick={() => navigate(`/product/${product.id}`)}
-                className="group cursor-pointer"
-              >
-                <div className="relative aspect-[4/5] bg-[#F7F7F7] mb-4 overflow-hidden rounded-sm">
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
-                    className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
-                    onError={(e) => { e.target.src = 'https://via.placeholder.com/300x400?text=Cricket+Bat' }}
-                  />
-                  <button className="absolute top-4 left-4 p-1.5 hover:text-red-500 transition-colors">
-                    <Heart className="w-5 h-5" />
-                  </button>
-                </div>
-                <h3 className="text-[14px] text-gray-800 line-clamp-2 leading-relaxed mb-1 hover:text-black transition-colors">
-                  {product.name}
-                </h3>
-                {product.rating && (
-                  <div className="flex items-center gap-1 mb-2">
-                    <div className="flex text-yellow-400">
-                      {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-sm">★</span>
-                      ))}
+            <div className="pb-20">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {saleProducts.map(product => (
+                  <div 
+                    key={product.id} 
+                    onClick={() => navigate(`/product/${product.id}`)}
+                    className="group cursor-pointer"
+                  >
+                    <div className="relative aspect-[4/5] bg-[#F7F7F7] mb-4 overflow-hidden rounded-sm">
+                      <img 
+                        src={product.image} 
+                        alt={product.name} 
+                        className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                        onError={(e) => { e.target.src = 'https://via.placeholder.com/300x400?text=Cricket+Bat' }}
+                      />
+                      <button className="absolute top-4 left-4 p-1.5 hover:text-red-500 transition-colors">
+                        <Heart className="w-5 h-5" />
+                      </button>
                     </div>
-                    <span className="text-[12px] text-gray-500">{product.rating}.0 (1) review</span>
+                    <h3 className="text-[14px] text-gray-800 line-clamp-2 leading-relaxed mb-1 hover:text-black transition-colors">
+                      {product.name}
+                    </h3>
+                    {product.rating && (
+                      <div className="flex items-center gap-1 mb-2">
+                        <div className="flex text-yellow-400">
+                          {[...Array(5)].map((_, i) => (
+                            <span key={i} className="text-sm">★</span>
+                          ))}
+                        </div>
+                        <span className="text-[12px] text-gray-500">{product.rating}.0 (1) review</span>
+                      </div>
+                    )}
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-[15px] font-bold">₹{product.price.toLocaleString('en-IN')}</span>
+                      <span className="text-[13px] text-gray-400 line-through font-medium">₹{product.oldPrice.toLocaleString('en-IN')}</span>
+                      <span className="text-[13px] text-red-600 font-bold italic">Save {product.save}</span>
+                    </div>
                   </div>
-                )}
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-[15px] font-bold">₹{product.price}</span>
-                  <span className="text-[13px] text-gray-400 line-through font-medium">₹{product.oldPrice}</span>
-                  <span className="text-[13px] text-red-600 font-bold italic">Save {product.save}</span>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </main>
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   );

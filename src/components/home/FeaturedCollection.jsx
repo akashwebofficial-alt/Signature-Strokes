@@ -1,8 +1,10 @@
 import { Heart, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
   return (
-    <div className="flex flex-col group cursor-pointer">
+    <div className="flex flex-col group cursor-pointer" onClick={() => navigate(`/product/${product.id}`)}>
       <div className="relative aspect-square bg-[#F7F7F7] mb-4 overflow-hidden rounded-sm">
         <button className="absolute top-3 left-3 z-10 p-1.5 bg-white rounded-full shadow-sm hover:text-red-500 transition-colors">
           <Heart className="w-4 h-4" />
@@ -58,6 +60,7 @@ const ProductCard = ({ product }) => {
 };
 
 const FeaturedCollection = () => {
+  const navigate = useNavigate();
   const products = [
     {
       id: 1,
@@ -173,6 +176,15 @@ const FeaturedCollection = () => {
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <button 
+            onClick={() => navigate('/featured-collection')}
+            className="inline-block px-10 py-4 border-2 border-[#4A1D1D] text-[#4A1D1D] font-bold uppercase tracking-widest hover:bg-[#4A1D1D] hover:text-white transition-all duration-300"
+          >
+            View All Featured
+          </button>
         </div>
       </div>
     </section>

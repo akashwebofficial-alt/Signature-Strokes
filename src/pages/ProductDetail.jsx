@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Heart, ChevronRight, Minus, Plus, ShieldCheck, CreditCard, ChevronDown, FileText, RefreshCw, Truck, Award, MessageSquare, Info, Star } from 'lucide-react';
+import { allProducts } from '../data/products';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -9,30 +10,10 @@ const ProductDetail = () => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [activeAccordion, setActiveAccordion] = useState('description');
 
-  // Mock central product data
-  const products = [
-    {
-      id: 1,
-      name: 'Nike Domain 3 Low Spikes Cricket Shoes',
-      price: 12745,
-      oldPrice: 14995,
-      discount: '20%',
-      sku: 'NK-DM3-001',
-      images: [
-        'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070',
-        'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=2000',
-        'https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012',
-        'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?q=80&w=2000'
-      ],
-      description: 'The Nike Domain 3 Low is designed for the high-performance cricketer. Featuring breathable mesh and synthetic leather, these shoes provide exceptional comfort and durability during long matches.'
-    },
-    // ... other products
-  ];
-
-  const product = products.find(p => p.id === parseInt(id)) || products[0];
+  const product = allProducts.find(p => p.id === parseInt(id)) || allProducts[0];
 
   const accordionItems = [
-    { id: 'description', title: 'DESCRIPTION', icon: FileText, content: product.description },
+    { id: 'description', title: 'DESCRIPTION', icon: FileText, content: product.description || 'No description available for this product.' },
     { id: 'returns', title: 'EASY RETURNS', icon: RefreshCw, content: 'We offer a 7-day easy return policy for all unused items in their original packaging.' },
     { id: 'shipping', title: 'SHIPPING & DELIVERY', icon: Truck, content: 'Standard shipping takes 3-5 business days. Express shipping options available at checkout.' },
     { id: 'payments', title: 'SECURE PAYMENTS', icon: CreditCard, content: 'We support all major credit cards, UPI, and net banking with secure encryption.' },
@@ -83,7 +64,7 @@ const ProductDetail = () => {
           <div className="lg:col-span-7 flex flex-col md:flex-row gap-4">
             {/* Thumbnails */}
             <div className="hidden md:flex flex-col gap-3 w-20">
-              {product.images.map((img, idx) => (
+              {(product.images || [product.image]).map((img, idx) => (
                 <button 
                   key={idx}
                   onClick={() => setSelectedImage(idx)}
@@ -100,7 +81,7 @@ const ProductDetail = () => {
             {/* Main Image */}
             <div className="flex-1 bg-[#F5F6F7] rounded-sm overflow-hidden aspect-square relative flex items-center justify-center">
               <img 
-                src={product.images[selectedImage]} 
+                src={(product.images || [product.image])[selectedImage]} 
                 alt={product.name} 
                 className="max-w-full max-h-full object-contain p-12 transition-transform duration-500"
               />
@@ -117,11 +98,11 @@ const ProductDetail = () => {
             </p>
 
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-2xl font-bold text-black">${(product.price / 80).toFixed(2)} CAD</span>
+              <span className="text-2xl font-bold text-black">₹{product.price.toLocaleString()}</span>
               {product.oldPrice && (
                 <>
-                  <span className="text-gray-400 line-through text-lg">${(product.oldPrice / 80).toFixed(2)} CAD</span>
-                  <span className="text-red-600 font-semibold italic">Save {product.discount}</span>
+                  <span className="text-gray-400 line-through text-lg">₹{product.oldPrice.toLocaleString()}</span>
+                  <span className="text-red-600 font-semibold italic">Save {product.save || product.discount}</span>
                 </>
               )}
             </div>
@@ -129,6 +110,22 @@ const ProductDetail = () => {
             <p className="text-[13px] text-gray-600 mb-6 border-b border-gray-100 pb-6">
               Tax included. <span className="underline cursor-pointer">Shipping</span> calculated at checkout.
             </p>
+
+            {/* Color Selection */}
+            {product.colors && (
+              <div className="mb-8 border-b border-gray-100 pb-6">
+                <label className="text-[12px] text-gray-700 font-bold uppercase tracking-widest mb-4 block">Color</label>
+                <div className="flex items-center gap-3">
+                  {product.colors.map((color, idx) => (
+                    <button 
+                      key={idx}
+                      className="w-8 h-8 rounded-full border border-gray-200 hover:border-black transition-colors p-0.5"
+                      style={{ backgroundColor: color }}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Quantity and Add to Cart */}
             <div className="mb-8">
@@ -212,9 +209,9 @@ const ProductDetail = () => {
                     <div className="flex-1">
                       <h4 className="text-[13px] text-gray-800 font-medium hover:text-blue-600 cursor-pointer mb-1">{item.name}</h4>
                       <div className="flex items-center gap-2">
-                        <span className="text-[13px] font-bold text-gray-900">${item.price} CAD</span>
+                        <span className="text-[13px] font-bold text-gray-900">₹{item.price.toLocaleString()}</span>
                         {item.oldPrice && (
-                          <span className="text-[12px] text-gray-400 line-through">${item.oldPrice} CAD</span>
+                          <span className="text-[12px] text-gray-400 line-through">₹{item.oldPrice.toLocaleString()}</span>
                         )}
                         {item.discount && (
                           <span className="text-[11px] text-red-600 font-bold italic">Save {item.discount}</span>
@@ -313,8 +310,8 @@ const ProductDetail = () => {
                 </h3>
                 <div className="flex flex-col items-center gap-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-[14px] font-bold text-gray-900">${item.price} CAD</span>
-                    <span className="text-[12px] text-gray-400 line-through">${item.oldPrice} CAD</span>
+                    <span className="text-[14px] font-bold text-gray-900">₹{item.price.toLocaleString()}</span>
+                    <span className="text-[12px] text-gray-400 line-through">₹{item.oldPrice.toLocaleString()}</span>
                   </div>
                   <span className="text-[11px] text-red-600 font-bold italic mb-1">{item.discount}</span>
                   {item.rating && (

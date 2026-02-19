@@ -49,6 +49,7 @@ const ProductCard = ({ product }) => {
 };
 
 const NewArrivals = () => {
+  const navigate = useNavigate();
   const products = [
     {
       id: 101,
@@ -127,6 +128,15 @@ const NewArrivals = () => {
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <button 
+            onClick={() => navigate('/new-arrivals')}
+            className="inline-block px-10 py-4 border-2 border-[#4A1D1D] text-[#4A1D1D] font-bold uppercase tracking-widest hover:bg-[#4A1D1D] hover:text-white transition-all duration-300"
+          >
+            View All New Arrivals
+          </button>
         </div>
       </div>
     </section>

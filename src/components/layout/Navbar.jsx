@@ -3,6 +3,16 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
+
+  const handleFilterNavigate = (category, filterType, filterValue) => {
+    const categoryPath = category.toLowerCase().replace(/\s+/g, '-');
+    let url = `/collection/${categoryPath}`;
+    if (filterType && filterValue && filterValue !== 'View all') {
+      url += `?${filterType}=${encodeURIComponent(filterValue)}`;
+    }
+    navigate(url);
+  };
+
   const menuItems = [
     { 
       name: 'Bats', 
@@ -10,27 +20,17 @@ const Navbar = () => {
       megaMenu: {
         brands: {
           logos: [
-            { name: 'SG', src: '/assets/images/hero2/Sg_Logo.svg' },
-            { name: 'Gray-Nicolls', src: '/assets/images/hero2/GrayNicolls_Logo.svg' },
-            { name: 'MRF', src: '/assets/images/hero2/Mrf_Logo.svg' },
-            { name: 'SS', src: '/assets/images/hero2/SS.svg' },
+            { src: '/assets/images/navbar/bat_brand.jpg' },
           ],
           links: ['SG', 'SS', 'DSC', 'Gortonshire', 'Gray Nicolls', 'View all']
         },
         sizes: {
-          items: [
-            { label: '3', height: 'h-16' },
-            { label: '4', height: 'h-20' },
-            { label: '5', height: 'h-24' },
-            { label: '6', height: 'h-28' },
-            { label: 'H', height: 'h-32' },
-            { label: 'SH', height: 'h-32' },
-            { label: 'LH', height: 'h-36' },
-          ],
+          image: '/assets/images/navbar/bat_size.jpg',
           links: ['Senior', 'Junior']
         },
         willow: {
-          links: ['English Willow', 'Kashmir Willow']
+          links: ['English Willow', 'Kashmir Willow'],
+          image: '/assets/images/navbar/bat_willows.jpg'
         }
       }
     },
@@ -41,22 +41,22 @@ const Navbar = () => {
         sections: [
           {
             title: 'PADS',
-            image: '/assets/images/protection/pads.png',
+            image: '/assets/images/navbar/pads.webp',
             links: ['Batting Pads', 'Wicket Keeping Pads']
           },
           {
             title: 'GLOVES',
-            image: '/assets/images/protection/gloves.png',
+            image: '/assets/images/navbar/gloves.jpg',
             links: ['Batting Gloves', 'Wicket Keeping Gloves', 'Inner Gloves']
           },
           {
-            title: 'HELMETS',
-            image: '/assets/images/protection/helmets.png',
+            title: 'HELMET',
+            image: '/assets/images/navbar/helmet.webp',
             links: ['Titanium Grill', 'Steel Grill']
           },
           {
-            title: 'GUARDS',
-            image: '/assets/images/protection/guards.png',
+            title: 'GUARD',
+            image: '/assets/images/navbar/guards.webp',
             links: ['Abdominal Guard', 'Chest Guard', 'Thigh Guard', 'Elbow Guard']
           }
         ]
@@ -68,13 +68,13 @@ const Navbar = () => {
       megaMenu: {
         sections: [
           {
-            title: 'DUFFLE CRICKET KITBAGS',
-            image: '/assets/images/kitbags/duffle.png',
+            title: 'Duffle Cricket Kitbags',
+            image: '/assets/images/navbar/duffle-cricket-bag.webp',
             links: []
           },
           {
-            title: 'TROLLEY CRICKET KITBAGS',
-            image: '/assets/images/kitbags/trolley.png',
+            title: 'Trolley Cricket Kitbags',
+            image: '/assets/images/navbar/trolley_cricket_kitbag.webp',
             links: []
           }
         ]
@@ -86,25 +86,25 @@ const Navbar = () => {
       megaMenu: {
         sections: [
           {
-            title: 'CAPS / HATS',
-            image: '/assets/images/clothings/caps-hats.png',
+            title: 'Caps / Hats',
+            image: '/assets/images/navbar/caps.webp',
             links: []
           },
           {
-            title: 'CRICKET WHITES',
-            image: '/assets/images/clothings/cricket-whites.png',
+            title: 'Cricket Whites',
+            image: '/assets/images/navbar/cricket-whites-collection.webp',
             links: []
           },
           {
-            title: 'SOCKS',
-            image: '/assets/images/clothings/socks.png',
+            title: 'Socks',
+            image: '/assets/images/navbar/socks.webp',
             links: []
           },
           {
-            title: 'TRUNK / BRIEFS',
-            image: '/assets/images/clothings/trunk-briefs.png',
+            title: 'Trunk / Briefs',
+            image: '/assets/images/navbar/trunks.webp',
             links: []
-          }
+          },
         ]
       }
     },
@@ -114,23 +114,23 @@ const Navbar = () => {
       megaMenu: {
         sections: [
           {
-            title: 'RED CRICKET BALLS',
-            image: '/assets/images/balls/red-ball.png',
+            title: 'Red Cricket Ball',
+            image: '/assets/images/navbar/red-ball-collection.webp',
             links: []
           },
           {
-            title: 'WHITE CRICKET BALLS',
-            image: '/assets/images/balls/white-ball.png',
+            title: 'White Cricket Balls',
+            image: '/assets/images/navbar/white-ball.webp',
             links: []
           },
           {
-            title: 'PINK CRICKET BALLS',
-            image: '/assets/images/balls/pink-ball.png',
+            title: 'Pink Cricket Ball',
+            image: '/assets/images/navbar/pink_ball.webp',
             links: []
           },
           {
-            title: 'TRAINING CRICKET BALLS',
-            image: '/assets/images/balls/training-ball.png',
+            title: 'Training Cricket Ball',
+            image: '/assets/images/navbar/tennis_ball.webp',
             links: []
           }
         ]
@@ -142,13 +142,13 @@ const Navbar = () => {
       megaMenu: {
         sections: [
           {
-            title: 'BATTING CRICKET SHOES',
-            image: '/assets/images/shoes/batting.png',
+            title: 'Batting Shoes',
+            image: '/assets/images/navbar/batting_shoes.webp',
             links: []
           },
           {
-            title: 'BOWLING CRICKET SHOES',
-            image: '/assets/images/shoes/bowling.png',
+            title: 'Bowling Shoes',
+            image: '/assets/images/navbar/bowling-shoes.jpg',
             links: []
           }
         ]
@@ -161,17 +161,17 @@ const Navbar = () => {
         sections: [
           {
             title: 'SUNGLASSES',
-            image: '/assets/images/accessories/sunglasses.png',
+            image: '/assets/images/navbar/sunglasses.webp',
             links: []
           },
           {
             title: 'BAT CARE',
-            image: '/assets/images/accessories/bat-care.png',
+            image: '/assets/images/navbar/bat_care.webp',
             links: []
           },
           {
             title: 'TRAINING',
-            image: '/assets/images/accessories/training.png',
+            image: '/assets/images/navbar/training.webp',
             links: []
           }
         ]
@@ -184,12 +184,12 @@ const Navbar = () => {
         sections: [
           {
             title: 'SENIOR COMPLETE KIT',
-            image: '/assets/images/kit-packages/senior.png',
+            image: '/assets/images/navbar/senior_kitbag.webp',
             links: []
           },
           {
             title: 'JUNIOR COMPLETE KIT',
-            image: '/assets/images/kit-packages/junior.png',
+            image: '/assets/images/navbar/junior_kitbag.webp',
             links: []
           }
         ]
@@ -205,7 +205,15 @@ const Navbar = () => {
           {menuItems.map((item) => (
             <li
               key={item.name}
-              onClick={() => item.name === 'Sale' && navigate('/sale')}
+              onClick={() => {
+                if (item.name === 'Sale') {
+                  navigate('/sale');
+                } else if (item.hasDropdown) {
+                  // Standardize category name for route (e.g., 'Kit Packages' -> 'kit-packages')
+                  const categoryPath = item.name.toLowerCase().replace(/\s+/g, '-');
+                  navigate(`/collection/${categoryPath}`);
+                }
+              }}
               className="group flex items-center gap-1 cursor-pointer font-medium text-[15px] hover:text-[#002B49] transition-colors py-4"
             >
               <div className="flex items-center gap-1">
@@ -224,55 +232,97 @@ const Navbar = () => {
                     {item.name === 'Bats' && (
                       <>
                         {/* Shop By Brand */}
-                        <div className="flex-1 max-w-[200px]">
-                          <div className="grid grid-cols-2 gap-3 mb-4">
-                            {item.megaMenu.brands.logos.map(logo => (
-                              <div key={logo.name} className="h-10 flex items-center justify-center p-1">
-                                <img src={logo.src} alt={logo.name} className="max-h-full object-contain pointer-events-none" />
-                              </div>
+                        <div className="flex-1 max-w-[300px] text-center">
+                          <div 
+                            className="flex items-center justify-center gap-4 mb-4 h-40 cursor-pointer"
+                            onClick={(e) => { e.stopPropagation(); handleFilterNavigate('Bats'); }}
+                          >
+                            {item.megaMenu.brands.logos.map((logo, index) => (
+                              <img 
+                                key={index}
+                                src={logo.src} 
+                                alt="Bat Brand" 
+                                className="max-h-full object-contain pointer-events-none" 
+                              />
                             ))}
                           </div>
-                          <h3 className="text-[10px] font-bold text-gray-500 tracking-[0.2em] mb-4 uppercase text-center">SHOP BY BRAND</h3>
+                          <h3 
+                            className="text-[11px] font-bold text-gray-900 tracking-[0.25em] mb-6 uppercase cursor-pointer"
+                            onClick={(e) => { e.stopPropagation(); handleFilterNavigate('Bats'); }}
+                          >
+                            Shop By Brand
+                          </h3>
                           <ul className="space-y-2 text-center">
                             {item.megaMenu.brands.links.map(link => (
-                              <li key={link} className={`text-[14px] cursor-pointer hover:text-[#002B49] transition-colors ${link === 'View all' ? 'font-bold text-[#4A1D1D]' : 'text-gray-600'}`}>{link}</li>
+                              <li 
+                                key={link} 
+                                onClick={(e) => { e.stopPropagation(); handleFilterNavigate('Bats', 'brand', link); }}
+                                className={`text-[14px] cursor-pointer ${link === 'View all' ? 'font-bold text-[#4A1D1D]' : 'text-gray-800'}`}
+                              >
+                                {link}
+                              </li>
                             ))}
                           </ul>
                         </div>
 
                         {/* Shop By Size */}
                         <div className="flex-1 max-w-[300px] text-center border-l border-gray-100 pl-8">
-                          <div className="flex items-end justify-center gap-3 mb-4 h-20">
-                            {item.megaMenu.sizes.items.map((size, idx) => (
-                              <div key={idx} className="flex flex-col items-center gap-2">
-                                <span className="text-[10px] font-bold text-gray-900">{size.label}</span>
-                                <div className={`w-[8px] ${size.height} bg-[#E8D5B5] rounded-t-sm relative shadow-sm`}>
-                                  <div className="absolute top-0 left-0 w-full h-[35%] bg-[#D4C4A8] rounded-t-sm" />
-                                </div>
-                              </div>
-                            ))}
+                          <div 
+                            className="flex items-center justify-center gap-4 mb-4 h-40 cursor-pointer"
+                            onClick={(e) => { e.stopPropagation(); handleFilterNavigate('Bats'); }}
+                          >
+                            <img 
+                              src={item.megaMenu.sizes.image} 
+                              alt="Bat Sizes" 
+                              className="max-h-full object-contain" 
+                            />
                           </div>
-                          <h3 className="text-[11px] font-bold text-gray-400 tracking-[0.25em] mb-6 uppercase">Shop By Size</h3>
+                          <h3 
+                            className="text-[11px] font-bold text-gray-900 tracking-[0.25em] mb-6 uppercase cursor-pointer"
+                            onClick={(e) => { e.stopPropagation(); handleFilterNavigate('Bats'); }}
+                          >
+                            Shop By Size
+                          </h3>
                           <ul className="space-y-3">
                             {item.megaMenu.sizes.links.map(link => (
-                              <li key={link} className="text-[15px] text-gray-600 cursor-pointer hover:text-[#002B49] transition-colors">{link}</li>
+                              <li 
+                                key={link} 
+                                onClick={(e) => { e.stopPropagation(); handleFilterNavigate('Bats', 'sizeType', link.toLowerCase()); }}
+                                className="text-[15px] text-gray-800 cursor-pointer"
+                              >
+                                {link}
+                              </li>
                             ))}
                           </ul>
                         </div>
 
                         {/* Shop By Willow */}
                         <div className="flex-1 max-w-[300px] text-center border-l border-gray-100 pl-8">
-                          <div className="flex items-center justify-center gap-4 mb-4 h-20">
-                            <div className="flex gap-3 items-end">
-                              <div className="w-8 h-24 bg-[#E8D5B5] border border-gray-200/50 rounded-sm shadow-sm transform -rotate-6" />
-                              <div className="w-8 h-28 bg-[#E8D5B5] border border-gray-200/50 rounded-sm shadow-sm" />
-                              <div className="w-8 h-24 bg-[#E8D5B5] border border-gray-200/50 rounded-sm shadow-sm transform rotate-6" />
-                            </div>
+                          <div 
+                            className="flex items-center justify-center gap-4 mb-4 h-40 cursor-pointer"
+                            onClick={(e) => { e.stopPropagation(); handleFilterNavigate('Bats'); }}
+                          >
+                            <img 
+                              src={item.megaMenu.willow.image} 
+                              alt="Cricket Bat" 
+                              className="max-h-full object-contain" 
+                            />
                           </div>
-                          <h3 className="text-[11px] font-bold text-gray-400 tracking-[0.25em] mb-6 uppercase">Shop By Willow</h3>
+                          <h3 
+                            className="text-[11px] font-bold text-gray-900 tracking-[0.25em] mb-6 uppercase cursor-pointer"
+                            onClick={(e) => { e.stopPropagation(); handleFilterNavigate('Bats'); }}
+                          >
+                            Shop By Willow
+                          </h3>
                           <ul className="space-y-3">
                             {item.megaMenu.willow.links.map(link => (
-                              <li key={link} className="text-[15px] text-gray-600 cursor-pointer hover:text-[#002B49] transition-colors">{link}</li>
+                              <li 
+                                key={link} 
+                                onClick={(e) => { e.stopPropagation(); handleFilterNavigate('Bats', 'style', link); }}
+                                className="text-[15px] text-gray-800 cursor-pointer"
+                              >
+                                {link}
+                              </li>
                             ))}
                           </ul>
                         </div>
@@ -282,18 +332,32 @@ const Navbar = () => {
                     {/* Protection, Kitbags, Clothings, Balls, Shoes, Accessories or Kit Packages Mega Menu */}
                     {(item.name === 'Protection' || item.name === 'Kitbags' || item.name === 'Clothings' || item.name === 'Balls' || item.name === 'Shoes' || item.name === 'Accessories' || item.name === 'Kit Packages') && item.megaMenu.sections.map((section, idx) => (
                       <div key={idx} className={`flex-1 max-w-[280px] text-center ${idx !== 0 ? 'border-l border-gray-100 pl-6' : ''}`}>
-                        <div className="h-24 mb-3 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300">
+                        <div 
+                          className="h-40 mb-3 flex items-center justify-center cursor-pointer"
+                          onClick={(e) => { e.stopPropagation(); handleFilterNavigate(item.name, 'style', section.title); }}
+                        >
                           <img 
                             src={section.image} 
                             alt={section.title} 
-                            className="max-h-full object-contain pointer-events-none hover:scale-105 transition-transform" 
-                            onError={(e) => { e.target.src = 'https://via.placeholder.com/200?text=' + section.title }}
+                            className="max-h-full object-contain pointer-events-none" 
+                            onError={(e) => { e.target.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' }}
                           />
                         </div>
-                        <h3 className="text-[10px] font-bold text-gray-500 tracking-[0.2em] mb-4 uppercase">{section.title}</h3>
+                        <h3 
+                          className="text-[10px] font-bold text-gray-900 tracking-[0.2em] mb-4 uppercase cursor-pointer"
+                          onClick={(e) => { e.stopPropagation(); handleFilterNavigate(item.name, 'style', section.title); }}
+                        >
+                          {section.title}
+                        </h3>
                         <ul className="space-y-2">
                           {section.links.map(link => (
-                            <li key={link} className="text-[14px] text-gray-600 cursor-pointer hover:text-[#002B49] transition-colors">{link}</li>
+                            <li 
+                              key={link} 
+                              onClick={(e) => { e.stopPropagation(); handleFilterNavigate(item.name, 'style', link); }}
+                              className="text-[14px] text-gray-800 cursor-pointer"
+                            >
+                              {link}
+                            </li>
                           ))}
                         </ul>
                       </div>
